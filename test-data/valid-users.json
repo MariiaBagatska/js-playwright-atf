@@ -1,0 +1,17 @@
+[
+  {
+    "username": "standard_user",
+    "password": "secret_sauce",
+    "expectedUrl": "https://www.saucedemo.com/inventory.html"
+  },
+  {
+    "username": "problem_user",
+    "password": "secret_sauce",
+    "expectedUrl": "https://www.saucedemo.com/inventory.html"
+  },
+  {
+    "username": "performance_glitch_user",
+    "password": "secret_sauce",
+    "expectedUrl": "https://www.saucedemo.com/inventory.html"
+  }
+]
