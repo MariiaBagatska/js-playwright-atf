@@ -21,8 +21,9 @@ Test user credentials are exposed because the learning platform provides them pu
 4. Get code from this repository
 ### Test run configuration
 By default the tests will run headless on a chromium driver.
-* command for headless run `npx playwright test`
-* command for headed run `npx playwright test --headed`
-* command for run in debug mode 'npx playwright test --debug'
+Switch to the local project repository and:
+* run command for headless test execution `npx playwright test`
+* run command for headed test execution `npx playwright test --headed`
+* run command for test execution in debug mode `npx playwright test --debug`
 ### Test report
 To open last HTML report run `npx playwright show-report`
