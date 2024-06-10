@@ -18,35 +18,35 @@
   ],
   "invalidUsers": [
     {
-      "scenario": "failed attempt due to account locked",
+      "scenario": "account locked",
       "username": "locked_out_user",
       "password": "secret_sauce",
       "error": "Epic sadface: Sorry, this user has been locked out.",
       "expectedUrl": "https://www.saucedemo.com/"
     },
     {
-      "scenario": "failed attempt due to invalid password",
+      "scenario": "invalid password",
       "username": "standard_user",
       "password": "secret_saucee",
       "error": "Epic sadface: Username and password do not match any user in this service",
       "expectedUrl": "https://www.saucedemo.com/"
     },
     {
-      "scenario": "failed attempt due to missing username",
+      "scenario": "missing username",
       "username": "",
       "password": "secret_sauce",
       "error": "Epic sadface: Username is required",
       "expectedUrl": "https://www.saucedemo.com/"
     },
     {
-      "scenario": "failed attempt due to missing password",
+      "scenario": "missing password",
       "username": "standard_user",
       "password": "",
       "error": "Epic sadface: Password is required",
       "expectedUrl": "https://www.saucedemo.com/"
     },
     {
-      "scenario": "failed attempt due to both credentials are missing",
+      "scenario": "both credentials are missing",
       "username": "",
       "password": "",
       "error": "Epic sadface: Username is required",

@@ -1,5 +1,8 @@
 // @ts-check
 const { defineConfig, devices } = require('@playwright/test');
+const dotenv = require('dotenv');
+
+dotenv.config();
 
 /**
  * Read environment variables from file.
@@ -33,6 +36,16 @@ module.exports = defineConfig({
 
   /* Configure projects for major browsers */
   projects: [
+    {
+      name: 'setup',
+      testMatch: 'auth.setup.js',
+    },
+    {
+      name: 'e2e-loggedin',
+      testMatch: '**/*loggedin.spec.js',
+      dependencies: ['setup'],
+      use: { storageState: './context/user.json' },
+    },
     {
       name: 'chromium',
       use: { ...devices['Desktop Chrome'] },
