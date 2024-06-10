@@ -4,4 +4,7 @@ node_modules/
 /blob-report/
 /playwright/.cache/
 /.idea/
+context/
+.env
+.DS_Store
 

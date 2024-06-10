@@ -13,7 +13,7 @@ export class LoginPage {
     #errorMessageLocator; 
 
    async userLogsIn(username, password) {
-    console.log(`Loging in user ${username}`);
+    console.log(`Loging ${username}`);
     await this.#usernameInput.fill(username);
     await this.#passwordInput.fill(password);
     await this.#loginButton.click();
