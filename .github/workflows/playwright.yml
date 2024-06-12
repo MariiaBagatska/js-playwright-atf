@@ -17,6 +17,15 @@ jobs:
       run: npm ci
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
+    - name: Set environment variables
+      env:
+        USERNAME: ${{secrets.USERNAME}}
+        PASSWORD: ${{secrets.PASSWORD}}
+      run: |
+        echo "::group:: Set einvironment variables"
+        echo "USERNAME = ${{secrets.USERNAME}}"
+        echo "PASSWORD = *****"
+        echo "::endgroup::"
     - name: Run Playwright tests
       run: npx playwright test
     - uses: actions/upload-artifact@v4

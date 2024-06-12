@@ -5,9 +5,9 @@ const authFile = './context/user.json';
 setup('Authentification', async ({ page }) => {
     await page.goto('/');
     const loginPage = new LoginPage(page);
-    await loginPage.userLogsIn(process.env.username, process.env.password);
+    await loginPage.userLogsIn(process.env.USERNAME, process.env.PASSWORD);
 
-    await page.waitForURL(process.env.expectedUrl);
+    await page.waitForURL('./inventory.html');
     // Save authentification state in the test context - meaning user is logged in
     console.log('Saving authentification in the test context');
     await page.context().storageState({ path: authFile });

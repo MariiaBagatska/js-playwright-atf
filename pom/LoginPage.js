@@ -7,27 +7,27 @@ export class LoginPage {
         this.#errorMessageLocator = this.page.locator('[data-test="error"]');
     }
 
-    #usernameInput; 
+    #usernameInput;
     #passwordInput;
     #loginButton;
-    #errorMessageLocator; 
+    #errorMessageLocator;
 
-   async userLogsIn(username, password) {
-    console.log(`Loging ${username}`);
-    await this.#usernameInput.fill(username);
-    await this.#passwordInput.fill(password);
-    await this.#loginButton.click();
-   }
-   
+    async userLogsIn(username, password) {
+        console.log(`Loging ${username}`);
+        await this.#usernameInput.fill(username);
+        await this.#passwordInput.fill(password);
+        await this.#loginButton.click();
+    }
+
     async getErrorMessage() {
         console.log(`Checking for the presence of error message on the login page`);
         const errorIsVisible = await this.#errorMessageLocator.isVisible();
-        if(errorIsVisible) {
+        if (errorIsVisible) {
             return await this.#errorMessageLocator.textContent();
         } else {
             return null;
         }
-        
+
     }
 }
 
