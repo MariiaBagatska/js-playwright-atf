@@ -24,7 +24,7 @@ jobs:
       run: |
         echo "::group:: Set einvironment variables"
         echo "USERNAME = ${{secrets.USERNAME}}"
-        echo "PASSWORD = *****"
+        echo "PASSWORD = ***"
         echo "::endgroup::"
     - name: Run Playwright tests
       run: npx playwright test
