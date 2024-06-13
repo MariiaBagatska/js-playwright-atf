@@ -7,7 +7,7 @@ The primary objective of this project is to gain hands-on experience with the Pl
 * [Playwright](https://playwright.dev/)
 * [GitHub Actions](https://docs.github.com/en/actions) as a CI/CD tool
 ## Sensitive Data Disclosure
-Test user credentials are exposed because the learning platform provides them publicly. In a real-world scenario, these credentials would be encrypted, added to GitHub Secrets, and configured in GitHub Actions. This ensures that tests can run both locally and in a CI/CD pipeline securely.
+Credentials used for testing purposes within the test data folder are not considered highly sensitive in this case. They are for simulated scenarios and provided publicly by the learning platform. However, authorization data are saved securely as encrypted secrets within GitHub Actions.
 ## Getting Started
 ### System requirements
 * Node.js 18+

@@ -40,26 +40,28 @@ module.exports = defineConfig({
       name: 'setup',
       testMatch: 'auth.setup.js',
     },
-    {
-      name: 'e2e-loggedin',
-      testMatch: '**/*loggedin.spec.js',
-      dependencies: ['setup'],
-      use: { storageState: './context/user.json' },
-    },
+    // {
+    //   name: 'e2e-logged in',
+    //   testMatch: '**/*loggedin.spec.js',
+    //   dependencies: ['setup'],
+    //   use: { storageState: './context/user.json' },
+    // }, 
     {
       name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
+      use: { ...devices['Desktop Chrome'], storageState: './context/user.json' },
+      dependencies: ['setup'],
     },
-
-    /* {
-      name: 'firefox',
-      use: { ...devices['Desktop Firefox'] },
-    },
-
-    {
-      name: 'webkit',
-      use: { ...devices['Desktop Safari'] },
-    }, */
+    /*{
+       name: 'firefox',
+       use: { ...devices['Desktop Firefox'], storageState: './context/user.json' },
+       dependencies: ['setup'],
+     },
+ 
+     /*{
+       name: 'webkit',
+       use: { ...devices['Desktop Safari'], storageState: './context/user.json },
+       dependencies: ['setup'],
+     }, */
 
     /* Test against mobile viewports. */
     // {
