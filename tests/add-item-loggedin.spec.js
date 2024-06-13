@@ -4,6 +4,7 @@ const CartPage = require('../pom/CartPage');
 
 test.beforeEach(async ({ page }) => {
     console.log(`Starting ${test.info().title}`);
+    await page.goto('/inventory.html');
 });
 
 test.afterEach(async ({ page }) => {
@@ -15,7 +16,6 @@ test.afterEach(async ({ page }) => {
 });
 
 test('Add item to the cart from Inventory page', async ({ page }) => {
-    await page.goto('./inventory.html');
     const inventoryPage = new InventoryPage(page);
     await expect(inventoryPage.itemIsVisible()).toBeTruthy();
     await expect(inventoryPage.itemCanBeAddedToCart()).toBeTruthy();

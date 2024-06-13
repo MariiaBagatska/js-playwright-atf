@@ -7,7 +7,7 @@ const invalidUsers = testUsers.invalidUsers;
 test.beforeEach(async ({ page }) => {
     console.log(`Starting ${test.info().title}`);
     console.log('Opening login page');
-    await page.goto('./');
+    await page.goto('/');
 });
 
 test.afterEach(async ({ page }) => {
@@ -37,7 +37,7 @@ for (let i = 0; i < invalidUsers.length; i++) {
     });
 }
 
-test.fail('Brute-force attack prevention', async ({ page }) => {
+test.fail('Brute-force attack prevention', async ({ page }) => { // This test expected to fail
     for (let i = 0; i < 5; i++) {
         console.log(`Login attempt # ${i}`);
         let validUsername = 'standard-user';
@@ -48,7 +48,9 @@ test.fail('Brute-force attack prevention', async ({ page }) => {
     await expect(page).toHaveURL(/locked/);
 });
 
-test('Session management after inactivity', async ({ page }) => {
+test('Session management after inactivity', {
+    tag: '@slow',
+}, async ({ page }) => {
     test.setTimeout(720000);
     const loginPage = new LoginPage(page);
     await loginPage.userLogsIn(validUsers[0].username, validUsers[0].password);
@@ -56,5 +58,5 @@ test('Session management after inactivity', async ({ page }) => {
     console.log('Simulating inactivity for 11 minutes');
     await page.waitForTimeout(660000);
     await page.goto(validUsers[0].expectedUrl);
-    await expect(page).toHaveURL('./');
+    await expect(page).toHaveURL('/');
 });
