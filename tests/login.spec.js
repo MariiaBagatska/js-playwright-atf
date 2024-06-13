@@ -37,7 +37,7 @@ for (let i = 0; i < invalidUsers.length; i++) {
     });
 }
 
-test.fail('Brute-force attack prevention', async ({ page }) => { // This test expected to fail
+test.fail('Brute-force attack prevention', async ({ page }) => { // This test is expected to fail
     for (let i = 0; i < 5; i++) {
         console.log(`Login attempt # ${i}`);
         let validUsername = 'standard-user';
