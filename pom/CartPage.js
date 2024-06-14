@@ -1,16 +1,23 @@
-export class CartPage {
+const PageHeader = require('../pom/PageHeader');
+
+export class CartPage extends PageHeader {
     constructor(page) {
+        super(page);
         this.page = page;
         this.#item = this.page.locator('[data-test="inventory-item"]').first();
         this.#itemName = this.page.locator('[data-test="inventory-item-name"]').first();
         this.#itemPrice = this.page.locator('[data-test="inventory-item-price"]').first();
-        this.#removeButton = this.page.locator('.btn_secondary').first();
+        this.#removeBtn = this.page.locator('.btn_secondary').first(); // because other locators are dynamic
+        this.#checkoutBtn = this.page.locator('[data-test="checkout"]');
+        this.#continueShoppingBtn = this.page.lpcator('[data-test="continue-shopping"]');
     }
 
     #item;
     #itemName;
     #itemPrice;
-    #removeButton;
+    #removeBtn;
+    #checkoutBtn;
+    #continueShoppingBtn;
 
     async itemIsVisible() {
         const isVisible = await this.#item.isVisible();
@@ -32,7 +39,16 @@ export class CartPage {
 
     async removeItemFromCart() {
         console.log('Removing item from the cart on the cart page');
-        return await this.#removeButton.click();
+        return await this.#removeBtn.click();
+    }
+
+    async clickCheckout() {
+        console.log('Checking out');
+        return await this.#checkoutBtn.click();
+    }
+    async clickContinueShopping() {
+        console.log('Returnig to the inventory page from the cart page');
+        return await this.#continueShoppingBtn.click();
     }
 }
 
