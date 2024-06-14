@@ -1,22 +1,30 @@
 export class LoginPage {
     constructor(page) {
         this.page = page;
-        this.#usernameInput = this.page.locator('#user-name');
-        this.#passwordInput = this.page.locator('#password');
-        this.#loginButton = this.page.locator('#login-button');
+        this.#usernameInput = this.page.locator('[data-test="username"]');
+        this.#passwordInput = this.page.locator('[data-test="password"]');
+        this.#loginBtn = this.page.locator('[data-test="login-button"]');
         this.#errorMessageLocator = this.page.locator('[data-test="error"]');
     }
 
     #usernameInput;
     #passwordInput;
-    #loginButton;
+    #loginBtn;
     #errorMessageLocator;
 
-    async userLogsIn(username, password) {
-        console.log(`Loging ${username}`);
-        await this.#usernameInput.fill(username);
-        await this.#passwordInput.fill(password);
-        await this.#loginButton.click();
+    async enterUsername(username) {
+        console.log(`Entering username: ${username}`);
+        return await this.#usernameInput.fill(username);
+    }
+
+    async enterPassword(password) {
+        console.log('Entering password');
+        return await this.#passwordInput.fill(password);
+    }
+
+    async clickLoginBtn() {
+        console.log('Clicking login button');
+        return await this.#loginBtn.click();
     }
 
     async getErrorMessage() {
