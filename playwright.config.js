@@ -37,33 +37,36 @@ module.exports = defineConfig({
   /* Configure projects for major browsers */
   projects: [
     {
+      name: 'chromium with custom fixture',
+      testMatch: 'withCustomFixtureExample.spec.js',
+      use: { ...devices['Desktop Chrome'] },
+    },
+    {
       name: 'setup',
       testMatch: 'auth.setup.js',
     },
-    // {
-    //   name: 'e2e-logged in',
-    //   testMatch: '**/*loggedin.spec.js',
-    //   dependencies: ['setup'],
-    //   use: { storageState: './context/user.json' },
-    // }, 
     {
-      name: 'chromium',
+      name: 'chromium e2e-logged in',
+      testMatch: '**/*loggedin.spec.js',
       use: { ...devices['Desktop Chrome'], storageState: './context/user.json' },
       dependencies: ['setup'],
     },
-    /*{
-       name: 'firefox',
-       use: { ...devices['Desktop Firefox'], storageState: './context/user.json' },
-       dependencies: ['setup'],
-     },
- 
-     /*{
-       name: 'webkit',
-       use: { ...devices['Desktop Safari'], storageState: './context/user.json },
-       dependencies: ['setup'],
-     }, */
+    {
+      name: 'chromium not logged in',
+      testMatch: 'login.spec.js',
+      use: { ...devices['Desktop Chrome'] },
+    },
+    // {
+    //    name: 'firefox',
+    //    use: { ...devices['Desktop Firefox'] },
+    //  },
 
-    /* Test against mobile viewports. */
+    /*{
+     //  name: 'webkit',
+     //  use: { ...devices['Desktop Safari'] },
+    }, 
+
+   /* Test against mobile viewports. */
     // {
     //   name: 'Mobile Chrome',
     //   use: { ...devices['Pixel 5'] },
