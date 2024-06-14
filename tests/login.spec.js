@@ -54,7 +54,7 @@ test.fail('Brute-force attack prevention', async ({ page }) => { // This test is
     await expect(page).toHaveURL(/locked/);
 });
 
-test.skip('Session management after inactivity', {
+test('Session management after inactivity', {
     tag: '@slow',
 }, async ({ page }) => {
     test.setTimeout(720000);
