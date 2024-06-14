@@ -9,7 +9,7 @@ export class CartPage extends PageHeader {
         this.#itemPrice = this.page.locator('[data-test="inventory-item-price"]').first();
         this.#removeBtn = this.page.locator('.btn_secondary').first(); // because other locators are dynamic
         this.#checkoutBtn = this.page.locator('[data-test="checkout"]');
-        this.#continueShoppingBtn = this.page.lpcator('[data-test="continue-shopping"]');
+        this.#continueShoppingBtn = this.page.locator('[data-test="continue-shopping"]');
     }
 
     #item;

@@ -2,7 +2,7 @@ export class PageHeader {
     constructor(page) {
         this.page = page;
         this.#menuBtn = this.page.locator('#react-burger-menu-btn'); // no data-test attribute
-        this.#cartBadge = this.page.locator('[data-test="shopping_cart_badge"]');
+        this.#cartBadge = this.page.locator('[data-test="shopping-cart-badge"]');
     }
 
     #menuBtn;
