@@ -54,15 +54,15 @@ test.fail('Brute-force attack prevention', async ({ page }) => { // This test is
     await expect(page).toHaveURL(/locked/);
 });
 
-test.skip('Session management after inactivity', {
+test('Session management after inactivity', {
     tag: '@slow',
 }, async ({ page }) => {
     test.setTimeout(720000);
     const loginPage = new LoginPage(page);
-    await loginPage.enterUsername(validUsers[0].username);
-    await loginPage.enterPassword(validUsers[0].password);
+    await loginPage.enterUsername(process.env.USERNAME);
+    await loginPage.enterPassword(process.env.PASSWORD);
     await loginPage.clickLoginBtn();
-    await expect(page).toHaveURL(validUsers[0].expectedUrl);
+    await expect(page).toHaveURL('/inventory.html');
     console.log('Simulating inactivity for 11 minutes');
     await page.waitForTimeout(660000);
     await page.goto(validUsers[0].expectedUrl);
