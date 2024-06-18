@@ -16,7 +16,7 @@ test.afterEach(async ({ page }) => {
     }
 });
 
-test('Add item to the cart from Inventory page', async ({ page, auth }) => {
+test('Add item to the cart from Inventory page using custom fixture for login', async ({ page, auth }) => {
     page.goto('/inventory.html');
     const inventoryPage = new InventoryPage(page);
     await expect(inventoryPage.itemIsVisible()).toBeTruthy();

@@ -14,6 +14,7 @@ const authFile = './context/user.json';
 
 const customFixtures = {
   auth: async ({ page }, use) => {
+    console.log('Running custom fixture "auth"');
     await page.goto('/');
     const loginPage = new LoginPage(page);
     await loginPage.enterUsername(process.env.USERNAME);
