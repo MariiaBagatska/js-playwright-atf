@@ -5,8 +5,8 @@ export class CheckoutCompletePage extends PageHeader {
         super(page);
         this.page = page;
         this.#completeLayer = this.page.locator('[data-test="checkout-complete-container"]');
-        this.#completeMessage = this.page.locator('[data-test]="complete-header"');
-        this.#completeText = this.page.locator('[data-test]="complete-text"');
+        this.#completeMessage = this.page.locator('[data-test="complete-header"]');
+        this.#completeText = this.page.locator('[data-test="complete-text"]');
         this.#backHomeBtn = this.page.locator('[data-test="back-to-products"]');
     }
 
