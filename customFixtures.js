@@ -8,8 +8,9 @@
 // - Larger Projects:Project dependencies promote organization and scalability.
 */
 
-const { expect, test: auth } = require(`@playwright/test`);
-const LoginPage = require(`./pom/LoginPage.js`);
+import { test as extendedTest } from '@playwright/test';
+import { LoginPage } from './pom/LoginPage.js';
+
 const authFile = './context/user.json';
 
 const customFixtures = {
@@ -29,5 +30,4 @@ const customFixtures = {
   },
 };
 
-const test = auth.extend(customFixtures);
-module.exports = { expect, test };
+export const test = extendedTest.extend(customFixtures);

@@ -1,8 +1,7 @@
-const { test } = require('../customFixtures.js'); // includes auth fixture with authentification
-const { expect } = require('@playwright/test');
-const InventoryPage = require('../pom/InventoryPage.js');
-const CartPage = require('../pom/CartPage.js');
-
+import { test } from '../customFixtures.js'; // includes auth fixture with authentification
+import { expect } from '@playwright/test';
+import { InventoryPage } from '../pom/InventoryPage';
+import { CartPage } from '../pom/CartPage.js';
 
 test.beforeEach(async ({ page }) => {
     console.log(`Starting ${test.info().title}`);

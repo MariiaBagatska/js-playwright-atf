@@ -1,4 +1,4 @@
-const PageHeader = require('../pom/PageHeader');
+import { PageHeader } from "./PageHeader";
 
 export class CheckoutCompletePage extends PageHeader {
     constructor(page) {
@@ -36,5 +36,3 @@ export class CheckoutCompletePage extends PageHeader {
     }
 
 }
-
-module.exports = CheckoutCompletePage;
