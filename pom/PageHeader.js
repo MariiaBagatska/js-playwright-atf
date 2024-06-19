@@ -19,5 +19,3 @@ export class PageHeader {
         return await this.#cartBadge.click();
     }
 }
-
-module.exports = PageHeader;

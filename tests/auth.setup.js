@@ -1,5 +1,6 @@
-const { test: setup } = require(`@playwright/test`);
-const LoginPage = require(`../pom/LoginPage.js`);
+import { test as setup } from '@playwright/test';
+import { LoginPage } from '../pom/LoginPage.js';
+
 const authFile = './context/user.json';
 
 setup('Authentification', async ({ page }) => {

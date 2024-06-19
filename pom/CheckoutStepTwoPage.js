@@ -1,4 +1,4 @@
-const PageHeader = require('./PageHeader');
+import { PageHeader } from "./PageHeader";
 
 export class CheckoutStepTwoPage extends PageHeader {
     constructor(page) {
@@ -77,5 +77,3 @@ export class CheckoutStepTwoPage extends PageHeader {
     }
 
 }
-
-module.exports = CheckoutStepTwoPage;

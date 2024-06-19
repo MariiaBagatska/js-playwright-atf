@@ -1,7 +1,12 @@
-import { test } from '../customFixtures.js'; // includes auth fixture with authentification
-import { expect } from '@playwright/test';
-import { InventoryPage } from '../pom/InventoryPage';
+
+import { test, expect } from '@playwright/test';
+import { InventoryPage } from '../pom/InventoryPage.js';
 import { CartPage } from '../pom/CartPage.js';
+import { CheckoutStepOnePage } from '../pom/CheckoutStepOnePage.js';
+import { CheckoutStepTwoPage } from '../pom/CheckoutStepTwoPage.js';
+import { CheckoutCompletePage } from '../pom/CheckoutCompletePage.js';
+import { createFakeCheckoutData } from '../test-data/fake-checkout-data.js';
+
 
 test.beforeEach(async ({ page }) => {
     console.log(`Starting ${test.info().title}`);
@@ -15,8 +20,8 @@ test.afterEach(async ({ page }) => {
     }
 });
 
-test('Add item to the cart from Inventory page using custom fixture for login', async ({ page, auth }) => {
-    page.goto('/inventory.html');
+test('Add item and checkout the cart', async ({ page }) => {
+    await page.goto('/inventory.html');
     const inventoryPage = new InventoryPage(page);
     await expect(inventoryPage.itemIsVisible()).toBeTruthy();
     await expect(inventoryPage.itemCanBeAddedToCart()).toBeTruthy();
@@ -37,4 +42,20 @@ test('Add item to the cart from Inventory page using custom fixture for login', 
     console.log('Verifying the item in the cart is the same as the item added from the inventory page');
     expect(inventoryItemName).toBe(cartItemName);
     expect(inventoryItemPrice).toBe(cartItemPrice);
+    await cartPage.clickCheckout();
+
+    const checkoutStepOnePage = new CheckoutStepOnePage(page);
+    const fakeCheckoutData = createFakeCheckoutData();
+    await checkoutStepOnePage.enterFirstName(fakeCheckoutData.firstName);
+    await checkoutStepOnePage.enterLastName(fakeCheckoutData.lastName);
+    await checkoutStepOnePage.enterPostalCode(fakeCheckoutData.zipCode);
+    await checkoutStepOnePage.clickContinueCheckout();
+
+    const checkoutStepTwoPage = new CheckoutStepTwoPage(page);
+    await checkoutStepTwoPage.clickFinishCheckout();
+
+    const checkoutCompletePage = new CheckoutCompletePage(page);
+    await checkoutCompletePage.completeLayerIsVisible();
+    await checkoutCompletePage.completeMessageIsVisible();
+    await checkoutCompletePage.completeTextIsVisible();
 });

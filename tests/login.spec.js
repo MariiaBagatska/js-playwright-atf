@@ -1,6 +1,9 @@
-const { test, expect } = require('@playwright/test');
-const testUsers = require('../test-data/test-users.json');
-const LoginPage = require('../pom/LoginPage');
+const testUsers = require('../test-data/test-users.json'); // works without error
+
+//import { testUsers } from '../test-data/test-users.json'; //brings undefined error as probably is accesed asynchrone
+import { test, expect } from '@playwright/test';
+import { LoginPage } from '../pom/LoginPage';
+
 const validUsers = testUsers.validUsers;
 const invalidUsers = testUsers.invalidUsers;
 
